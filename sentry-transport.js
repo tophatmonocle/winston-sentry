@@ -55,7 +55,7 @@ Sentry.prototype.log = function (level, msg, meta, callback) {
   try {
     if(level == 'error') {
       // Support exceptions logging
-      this._sentry.captureError(new Error(msg), extra, function(err) {
+      this._sentry.captureError(msg, extra, function(err) {
         callback(null, true);
       });
     } else {
