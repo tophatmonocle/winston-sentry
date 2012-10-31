@@ -53,7 +53,7 @@ Sentry.prototype.log = function (level, msg, meta, callback) {
   });
   
   try {
-    if(level == 'error' && msg instanceof 'Error') {
+    if(level == 'error' && typeof msg == 'object' && msg instanceof 'Error') {
       // Support exceptions logging
       this._sentry.captureError(msg, extra, function(err) {
         callback(null, true);
